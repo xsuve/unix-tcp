@@ -10,5 +10,7 @@ export class UNIXClient extends Client {
     this.client = createConnection(config.unixSocketPath);
 
     this.client.on('connect', () => this.onConnect());
+
+    this.client.on('data', (buffer: Buffer) => this.onData(buffer));
   }
 }

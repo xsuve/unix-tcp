@@ -13,5 +13,7 @@ export class TCPClient extends Client {
     });
 
     this.client.on('connect', () => this.onConnect());
+
+    this.client.on('data', (buffer: Buffer) => this.onData(buffer));
   }
 }
