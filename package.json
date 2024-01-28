@@ -1,0 +1,16 @@
+{
+  "name": "unix-tcp",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "rm -r /tmp/unix-tcp.sock && rm -r ./build && tsc",
+    "server": "node ./build/server.js",
+    "client": "node ./build/client.js"
+  },
+  "author": "xsuve",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.7",
+    "typescript": "^5.3.3"
+  }
+}

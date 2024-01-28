@@ -1,0 +1,5 @@
+export enum ErrorCode {
+  UNKNOWN_ERROR = 0,
+  WRONG_PASSWORD_ERROR = 1,
+  CLIENT_NOT_AVAILABLE_ERROR = 2,
+}
