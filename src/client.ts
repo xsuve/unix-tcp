@@ -1,22 +1,20 @@
-import { createInterface } from 'readline/promises';
-import { stdin, stdout } from 'node:process';
 import { UNIXClient } from './classes/client/UNIXClient';
 import { TCPClient } from './classes/client/TCPClient';
+import { getInput } from './utils';
 
 (async () => {
-  const readline = createInterface({ input: stdin, output: stdout });
-
-  const socketType = await readline.question(
-    '[CLIENT] Choose client socket type (unix / tcp): '
-  );
+  const socketType = await getInput('Choose client socket type', [
+    'unix',
+    'tcp',
+  ]);
 
   switch (socketType) {
     case 'unix':
-      const unixClient = new UNIXClient();
+      new UNIXClient();
       break;
 
     case 'tcp':
-      const tcpClient = new TCPClient();
+      new TCPClient();
       break;
 
     default:
