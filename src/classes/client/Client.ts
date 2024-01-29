@@ -125,7 +125,9 @@ export abstract class Client {
         {
           console.log('[CLIENT] Hint:', message.hint);
 
-          const guess = await getInput(`(${message.playerA}) Guess word`);
+          const guess = await getInput(
+            `(${message.playerA}) Guess word / Give up (${config.giveUpWord})`
+          );
 
           this.send(this.socket, {
             code: MessageCode.CHECK_WORD,
