@@ -7,21 +7,23 @@ export enum MessageCode {
   VALID_PASSWORD = 3,
   REQUEST_OPPONENTS = 4,
   OPPONENTS_LIST = 5,
-  REQUEST_MATCH = 6,
-  REJECT_MATCH = 7,
-  REQUEST_WORD = 8,
-  CHECK_WORD = 9,
-  INFORM_ATTEMPTS = 10,
-  SEND_HINT = 11,
-  SHOW_HINT = 12,
-  SEND_GIVE_UP = 13,
-  SEND_END_MATCH = 14,
-  UNKNOWN = 15,
+  NO_OPPONENTS = 6,
+  REQUEST_MATCH = 7,
+  REJECT_MATCH = 8,
+  REQUEST_WORD = 9,
+  CHECK_WORD = 10,
+  INFORM_ATTEMPT = 11,
+  REQUEST_HINT = 12,
+  SEND_HINT = 13,
+  SHOW_HINT = 14,
+  SEND_END_MATCH = 15,
+  UNKNOWN = 16,
 }
 
 export type MessageStrings = {
   password?: string;
-  clientId?: string;
+  playerA?: string;
+  playerB?: string;
   opponents?: string;
   word?: string;
   hint?: string;
@@ -29,7 +31,6 @@ export type MessageStrings = {
 export type MessageIntegers = {
   code: MessageCode;
   errorCode?: ErrorCode;
-  attempts?: number;
 };
 export type MessageBooleans = {
   status?: boolean;
@@ -37,12 +38,11 @@ export type MessageBooleans = {
 export type Message = MessageStrings & MessageIntegers & MessageBooleans;
 
 export const MessageTemplate = {
-  bitmaskBytes: 2, // 9 properties => 9 bits => 2 bytes
-  strings: ['password', 'clientId', 'opponents', 'word', 'hint'],
+  bitmaskBytes: 2, // 10 properties => 10 bits => 2 bytes
+  strings: ['password', 'playerA', 'playerB', 'opponents', 'word', 'hint'],
   integers: {
     code: 1, // 16 message codes => 1 bytes
-    errorCode: 1, // 3 error codes => 1 byte
-    attempts: 1, // 256 max attempts => 1 byte
+    errorCode: 1, // 4 error codes => 1 byte
   },
   booleans: ['status'],
   booleanBytes: 1, // 0 or 1 => 1 byte

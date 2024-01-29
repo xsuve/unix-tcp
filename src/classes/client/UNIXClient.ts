@@ -3,14 +3,14 @@ import { config } from '../../config';
 import { Client } from './Client';
 
 export class UNIXClient extends Client {
-  client: Socket;
+  socket: Socket;
 
   constructor() {
     super();
-    this.client = createConnection(config.unixSocketPath);
+    this.socket = createConnection(config.unixSocketPath);
 
-    this.client.on('connect', () => this.onConnect());
+    this.socket.on('connect', () => this.onConnect());
 
-    this.client.on('data', (buffer: Buffer) => this.onData(buffer));
+    this.socket.on('data', (buffer: Buffer) => this.receive(buffer));
   }
 }

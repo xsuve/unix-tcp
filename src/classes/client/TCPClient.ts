@@ -3,17 +3,17 @@ import { config } from '../../config';
 import { Client } from './Client';
 
 export class TCPClient extends Client {
-  client: Socket;
+  socket: Socket;
 
   constructor() {
     super();
-    this.client = createConnection({
+    this.socket = createConnection({
       host: config.tcpHost,
       port: config.tcpPort,
     });
 
-    this.client.on('connect', () => this.onConnect());
+    this.socket.on('connect', () => this.onConnect());
 
-    this.client.on('data', (buffer: Buffer) => this.onData(buffer));
+    this.socket.on('data', (buffer: Buffer) => this.receive(buffer));
   }
 }

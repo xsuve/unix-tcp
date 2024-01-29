@@ -1,3 +1,5 @@
+// https://www.dynetisgames.com/2017/06/14/custom-binary-protocol-javascript/
+
 import {
   Message,
   MessageBooleans,
