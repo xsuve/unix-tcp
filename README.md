@@ -36,3 +36,5 @@ Optional/bonus: offer a website that displays the progress of all the matches, f
 
 | Client specifics:
 Must be able to connect to either Unix socket or a TCP port.
+
+![unix-tcp](screenshot.png)
